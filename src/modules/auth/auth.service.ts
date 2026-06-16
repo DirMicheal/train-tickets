@@ -63,9 +63,6 @@ export class AuthService {
         if (!username) {
           throw new BadRequestException('用户名不能为空');
         }
-        if (!phone && !email) {
-          throw new BadRequestException('手机号或邮箱至少填写一个');
-        }
         break;
     }
 
@@ -98,8 +95,8 @@ export class AuthService {
 
     const user = this.userRepository.create({
       username,
-      phone,
-      email,
+      phone: phone || null,
+      email: email || null,
       password: await this.utilService.hashPassword(dto.password),
       realName: dto.realName,
       idCard: dto.idCard,

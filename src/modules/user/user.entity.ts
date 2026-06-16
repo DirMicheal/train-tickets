@@ -32,8 +32,8 @@ export class User {
 
   @ApiProperty({ description: '手机号' })
   @Index({ unique: true })
-  @Column({ type: 'varchar', length: 20, unique: true })
-  phone: string;
+  @Column({ type: 'varchar', length: 20, unique: true, nullable: true })
+  phone?: string;
 
   @ApiProperty({ description: '邮箱' })
   @Index({ unique: true })
